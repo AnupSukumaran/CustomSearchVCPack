@@ -76,14 +76,13 @@ public class ViewModel: NSObject {
         let rightConstraint = NSLayoutConstraint(item: customSearchController.customSearchBar!, attribute: .trailing, relatedBy: .equal, toItem: vc.view, attribute: .trailing, multiplier: 1, constant: 0)
         let heightConstraint = NSLayoutConstraint(item: customSearchController.customSearchBar!, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 44)
         customSearchController.customSearchBar.translatesAutoresizingMaskIntoConstraints = false
-        
+        customSearchController.customSearchBar.addConstraint(heightConstraint)
         if #available(iOS 11.0, *) {
-            tableTopConstraint.constant = vc.topbarHeight + customSearchController.customSearchBar.frame.height
-        } else {
             tableTopConstraint.constant =  customSearchController.customSearchBar.frame.height
+        } else {
+            tableTopConstraint.constant = -20
         }
 
-        customSearchController.customSearchBar.addConstraint(heightConstraint)
         vc.view.addSubview(customSearchController.customSearchBar)
         vc.view.addConstraints([topConstraint, leftConstraint, rightConstraint])
         

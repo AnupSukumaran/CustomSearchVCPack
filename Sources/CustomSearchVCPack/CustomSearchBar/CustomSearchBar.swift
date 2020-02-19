@@ -17,12 +17,13 @@ public class CustomSearchBar: UISearchBar {
     init(frame: CGRect, font: UIFont, textColor: UIColor) {
         super.init(frame: frame)
         
-        viewModel = CustomSearchModel()
+        
         self.frame = frame
         preferredFont = font
         preferredTextColor = textColor
         searchBarStyle = .prominent
         isTranslucent = false
+        viewModel = CustomSearchModel()
     }
 
     required init?(coder aDecoder: NSCoder) {
