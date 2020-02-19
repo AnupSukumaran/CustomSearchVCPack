@@ -39,7 +39,7 @@ class CustomSearchModel: NSObject {
           var index: Int!
         let searchBarView = bar.subviews[0]
           
-          for i in 0...searchBarView.subviews.count {
+          for i in 0..<searchBarView.subviews.count {
               if searchBarView.subviews[i].isKind(of: UITextField.self) {
                   index = i
                   break
