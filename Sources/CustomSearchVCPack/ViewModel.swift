@@ -89,4 +89,19 @@ public class ViewModel: NSObject {
         customSearchController.customDelegate = vc as? CustomSearchControllerDelegate
         
     }
+    
+    
+    public func configureCustomSearchControllerV2(view: UIView, searchBarTextColor: UIColor = .orange, searchBarTintColor: UIColor = .black, placeHolderString: String = "Search", frame: CGRect? = nil, font: UIFont? = nil ){
+      
+        customSearchController = CustomSearchController(searchResultsController: vc, searchBarFrame: frame ?? defaultFrame , searchBarFont: font ?? defaultFont!, searchBarTextColor: searchBarTextColor, searchBarTintColor: searchBarTintColor)
+        
+        customSearchController.customSearchBar.placeholder = placeHolderString
+        customSearchController.customDelegate = vc as? CustomSearchControllerDelegate
+
+        
+        view.addSubview(customSearchController.customSearchBar)
+       
+        
+        
+    }
 }
