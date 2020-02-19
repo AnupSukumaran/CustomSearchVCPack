@@ -20,6 +20,7 @@ extension CustomSearchController: UISearchBarDelegate {
     }
     
     public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
         customSearchBar.resignFirstResponder()
         customDelegate.didTapOnCancelButton()
     }

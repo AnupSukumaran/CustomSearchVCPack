@@ -13,6 +13,7 @@ public protocol CustomSearchControllerDelegate {
     func didTapOnSearchButton()
     func didTapOnCancelButton()
     func didChangeSearchText(searchText: String)
+    
 }
 
 
