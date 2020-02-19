@@ -1,5 +1,5 @@
 //
-//  ViewModel.swift
+//  SearchViewModel.swift
 //  CustomSearchBar
 //
 //  Created by Manu Puthoor on 18/02/20.
@@ -9,7 +9,7 @@
 import UIKit
 
 
-public class ViewModel: NSObject {
+public class SearchViewModel: NSObject {
     
     var customSearchController: CustomSearchController!
     var vc: UIViewController!
@@ -40,9 +40,9 @@ public class ViewModel: NSObject {
         return dataArray
     }
 
-    public func returnCell(_ tableView: UITableView,_ indexPath: IndexPath,_ shouldShowSearchResults: Bool, arrays: (data :[String], filter: [String]) ) -> UITableViewCell {
+    public func returnCell(_ tableView: UITableView,cellID: String, _ indexPath: IndexPath,_ shouldShowSearchResults: Bool, arrays: (data :[String], filter: [String]) ) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "idCell", for: indexPath as IndexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath as IndexPath)
         
         shouldShowSearchResults ?
         (cell.textLabel?.text = arrays.filter[indexPath.row]) :
