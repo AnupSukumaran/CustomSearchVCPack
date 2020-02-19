@@ -17,7 +17,7 @@ public class SearchViewModel: NSObject {
     var defaultFrame:CGRect!
     let defaultFont = UIFont(name: "Futura", size: 16.0)
     
-    public init(vc: UIViewController, tableTopConstraint: NSLayoutConstraint) {
+    public init(vc: UIViewController, tableTopConstraint: NSLayoutConstraint? = nil) {
         super.init()
         self.vc = vc
         self.tableTopConstraint = tableTopConstraint
@@ -65,6 +65,32 @@ public class SearchViewModel: NSObject {
             
     }
     
+    public func configureCustomSearchController(view: UIView, searchBarTextColor: UIColor = .orange, searchBarTintColor: UIColor = .black, placeHolderString: String = "Search", frame: CGRect? = nil, font: UIFont? = nil ){
+        
+          customSearchController = CustomSearchController(searchResultsController: vc, searchBarFrame: frame ?? defaultFrame , searchBarFont: font ?? defaultFont!, searchBarTextColor: searchBarTextColor, searchBarTintColor: searchBarTintColor)
+          
+          customSearchController.customSearchBar.placeholder = placeHolderString
+          
+          let topConstraint = NSLayoutConstraint(item: customSearchController.customSearchBar!, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 0)
+          let leftConstraint = NSLayoutConstraint(item: customSearchController.customSearchBar!, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0)
+          let rightConstraint = NSLayoutConstraint(item: customSearchController.customSearchBar!, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0)
+          let heightConstraint = NSLayoutConstraint(item: customSearchController.customSearchBar!, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: view.frame.height)
+          customSearchController.customSearchBar.translatesAutoresizingMaskIntoConstraints = false
+          customSearchController.customSearchBar.addConstraint(heightConstraint)
+          
+          
+          
+          view.addSubview(customSearchController.customSearchBar)
+          view.addConstraints([topConstraint, leftConstraint, rightConstraint])
+          customSearchController.customDelegate = vc as? CustomSearchControllerDelegate
+          
+//          guard #available(iOS 11.0, *) else {
+//              tableTopConstraint.constant = heightConstraint.constant + 10
+//              return
+//          }
+    
+      }
+    
     public func configureCustomSearchControllerV2(view: UIView, searchBarTextColor: UIColor = .orange, searchBarTintColor: UIColor = .black, placeHolderString: String = "Search", frame: CGRect? = nil, font: UIFont? = nil ){
       
         customSearchController = CustomSearchController(searchResultsController: vc, searchBarFrame: frame ?? defaultFrame , searchBarFont: font ?? defaultFont!, searchBarTextColor: searchBarTextColor, searchBarTintColor: searchBarTintColor)
@@ -88,10 +114,6 @@ public class SearchViewModel: NSObject {
             tableTopConstraint.constant = heightConstraint.constant + 10
             return
         }
-       
-        
-       
-        
-        
+  
     }
 }
