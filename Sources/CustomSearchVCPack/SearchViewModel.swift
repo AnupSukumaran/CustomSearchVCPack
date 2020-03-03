@@ -11,7 +11,7 @@ import UIKit
 
 public class SearchViewModel: NSObject {
     
-    var customSearchController: CustomSearchController!
+    public var customSearchController: CustomSearchController!
     var vc: UIViewController!
     var tableTopConstraint: NSLayoutConstraint!
     var defaultFrame:CGRect!
