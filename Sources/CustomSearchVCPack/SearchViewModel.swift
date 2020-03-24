@@ -78,8 +78,6 @@ public class SearchViewModel: NSObject {
           customSearchController.customSearchBar.translatesAutoresizingMaskIntoConstraints = false
           customSearchController.customSearchBar.addConstraint(heightConstraint)
           
-          
-          
           view.addSubview(customSearchController.customSearchBar)
           view.addConstraints([topConstraint, leftConstraint, rightConstraint])
           customSearchController.customDelegate = vc as? CustomSearchControllerDelegate

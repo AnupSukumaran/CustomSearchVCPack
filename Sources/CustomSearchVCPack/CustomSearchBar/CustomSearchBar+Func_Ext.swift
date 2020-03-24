@@ -1,18 +1,18 @@
 //
-//  CustomSearchModel.swift
-//  CustomSearchBar
+//  File.swift
+//  
 //
-//  Created by Manu Puthoor on 18/02/20.
-//  Copyright © 2020 Appcoda. All rights reserved.
+//  Created by Manu Puthoor on 24/03/20.
 //
 
 import UIKit
 
-class CustomSearchModel: NSObject {
+extension CustomSearchBar {
     
     func drawSearchBar(bar: CustomSearchBar) {
         
-        if #available(iOS 11.0, *) {
+        if #available(iOS 13.0, *) {
+            
             bar.searchTextField.frame = CGRect(x: 5.0, y: 5.0, width: bar.frame.size.width - 10.0, height: bar.frame.size.height - 10.0)
             bar.searchTextField.font = bar.preferredFont
             bar.searchTextField.textColor = bar.preferredTextColor
@@ -27,6 +27,7 @@ class CustomSearchModel: NSObject {
                 searchField.textColor = bar.preferredTextColor
                 searchField.backgroundColor = bar.barTintColor
             }
+            
         }
         
         

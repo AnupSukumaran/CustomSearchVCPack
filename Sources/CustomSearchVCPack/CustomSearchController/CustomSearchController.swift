@@ -51,10 +51,6 @@ public class CustomSearchController: UISearchController {
         customSearchBar.delegate = self
     }
     
-    override public func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 }
 
 

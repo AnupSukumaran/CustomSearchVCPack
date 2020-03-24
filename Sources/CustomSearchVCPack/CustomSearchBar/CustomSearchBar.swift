@@ -12,18 +12,15 @@ public class CustomSearchBar: UISearchBar {
 
     var preferredFont: UIFont!
     var preferredTextColor: UIColor!
-    var viewModel: CustomSearchModel?
     
     init(frame: CGRect, font: UIFont, textColor: UIColor) {
         super.init(frame: frame)
-        
-        
         self.frame = frame
         preferredFont = font
         preferredTextColor = textColor
         searchBarStyle = .prominent
         isTranslucent = false
-        viewModel = CustomSearchModel()
+
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -31,8 +28,10 @@ public class CustomSearchBar: UISearchBar {
     }
 
     override public func draw(_ rect: CGRect) {
-        viewModel?.drawSearchBar(bar: self)
+        drawSearchBar(bar: self)
         super.draw(rect)
     }
     
 }
+
+
