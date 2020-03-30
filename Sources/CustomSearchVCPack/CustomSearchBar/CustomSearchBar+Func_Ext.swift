@@ -40,7 +40,7 @@ extension CustomSearchBar {
 
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = path.cgPath
-        shapeLayer.strokeColor = bar.preferredTextColor.cgColor
+        shapeLayer.strokeColor = bar.preferredLineColor.cgColor
         shapeLayer.lineWidth = 2.5
 
         bar.layer.addSublayer(shapeLayer)

@@ -11,6 +11,7 @@ import UIKit
 extension CustomSearchController: UISearchBarDelegate {
     
     public func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        customSearchBar.showsCancelButton = true
         customDelegate.didStartSearching()
     }
     
@@ -22,6 +23,7 @@ extension CustomSearchController: UISearchBarDelegate {
     public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = ""
         customSearchBar.resignFirstResponder()
+        customSearchBar.showsCancelButton = false
         customDelegate.didTapOnCancelButton()
     }
     

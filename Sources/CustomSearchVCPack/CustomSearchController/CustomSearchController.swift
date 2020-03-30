@@ -26,10 +26,10 @@ public class CustomSearchController: UISearchController {
         super.viewDidLoad()
     }
 
-    public init(searchResultsController: UIViewController!, searchBarFrame: CGRect, searchBarFont: UIFont, searchBarTextColor: UIColor, searchBarTintColor: UIColor) {
+    public init(searchResultsController: UIViewController!, searchBarFrame: CGRect, searchBarFont: UIFont, searchBarTextColor: UIColor, searchBarTintColor: UIColor, lineColor: UIColor) {
         super.init(searchResultsController: searchResultsController)
         
-        configureSearchBar(frame: searchBarFrame, font: searchBarFont, textColor: searchBarTextColor, bgColor: searchBarTintColor)
+        configureSearchBar(frame: searchBarFrame, font: searchBarFont, textColor: searchBarTextColor, bgColor: searchBarTintColor, lineColor: lineColor)
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -40,14 +40,13 @@ public class CustomSearchController: UISearchController {
         super.init(coder: aDecoder)
     }
 
-    func configureSearchBar(frame: CGRect, font: UIFont, textColor: UIColor, bgColor: UIColor) {
-        customSearchBar = CustomSearchBar(frame: frame, font: font , textColor: textColor)
+    func configureSearchBar(frame: CGRect, font: UIFont, textColor: UIColor, bgColor: UIColor, lineColor: UIColor) {
+        customSearchBar = CustomSearchBar(frame: frame, font: font , textColor: textColor, lineColor: lineColor)
         
         customSearchBar.barTintColor = bgColor
         customSearchBar.tintColor = textColor
         customSearchBar.showsBookmarkButton = false
-        customSearchBar.showsCancelButton = true
-        
+        customSearchBar.showsCancelButton = false
         customSearchBar.delegate = self
     }
     
