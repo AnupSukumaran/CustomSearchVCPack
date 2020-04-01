@@ -43,10 +43,12 @@ public class SearchViewModel: NSObject {
     public func returnCell(_ tableView: UITableView,cellID: String, _ indexPath: IndexPath,_ shouldShowSearchResults: Bool, arrays: (data :[String], filter: [String]) ) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath as IndexPath)
-        
-        shouldShowSearchResults ?
-        (cell.textLabel?.text = arrays.filter[indexPath.row]) :
-        (cell.textLabel?.text = arrays.data[indexPath.row])
+        if !arrays.data.isEmpty, !arrays.filter.isEmpty {
+            shouldShowSearchResults ?
+                   (cell.textLabel?.text = arrays.filter[indexPath.row]) :
+                   (cell.textLabel?.text = arrays.data[indexPath.row])
+        }
+       
         
         return cell
     }
