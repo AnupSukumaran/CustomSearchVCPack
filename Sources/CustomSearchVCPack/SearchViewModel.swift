@@ -18,6 +18,7 @@ public class SearchViewModel: NSObject {
     let defaultFont = UIFont(name: "Futura", size: 16.0)
     
     public init(vc: UIViewController, tableTopConstraint: NSLayoutConstraint? = nil) {
+        
         super.init()
         self.vc = vc
         self.tableTopConstraint = tableTopConstraint
