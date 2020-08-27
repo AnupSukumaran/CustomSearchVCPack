@@ -13,14 +13,23 @@ public class SearchViewModel: NSObject {
     
     public var customSearchController: CustomSearchController!
     var vc: UIViewController!
+    weak var delegate: CustomSearchControllerDelegate?
     var tableTopConstraint: NSLayoutConstraint!
     var defaultFrame:CGRect!
     let defaultFont = UIFont(name: "Futura", size: 16.0)
     
-    public init(vc: UIViewController, tableTopConstraint: NSLayoutConstraint? = nil) {
-        
+    public init(vc: UIViewController,delegate: CustomSearchControllerDelegate, tableTopConstraint: NSLayoutConstraint? = nil) {
         super.init()
         self.vc = vc
+        self.delegate = delegate
+        self.tableTopConstraint = tableTopConstraint
+        self.defaultFrame = CGRect(x: 0.0, y: 0.0, width: vc.view.frame.width, height: 50.0)
+    }
+    
+    public init(vc: UIViewController, tableTopConstraint: NSLayoutConstraint? = nil) {
+        super.init()
+        self.vc = vc
+        self.delegate = vc as? CustomSearchControllerDelegate 
         self.tableTopConstraint = tableTopConstraint
         self.defaultFrame = CGRect(x: 0.0, y: 0.0, width: vc.view.frame.width, height: 50.0)
     }
@@ -83,7 +92,7 @@ public class SearchViewModel: NSObject {
           
           view.addSubview(customSearchController.customSearchBar)
           view.addConstraints([topConstraint, leftConstraint, rightConstraint])
-          customSearchController.customDelegate = vc as? CustomSearchControllerDelegate
+          customSearchController.customDelegate = delegate
           
       }
     

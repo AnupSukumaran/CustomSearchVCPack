@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol CustomSearchControllerDelegate {
+public protocol CustomSearchControllerDelegate: class {
     func didStartSearching()
     func didTapOnSearchButton()
     func didTapOnCancelButton()
